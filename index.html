@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Analítica de Datos | Monitoreo Integral del Presupuesto de la República — SEFIN</title>
+<meta name="description" content="Finanzas públicas explicadas con datos claros. Monitoreo integral del presupuesto de la República de Honduras.">
+
+<!-- ===================== FUENTES Y RECURSOS EXTERNOS ===================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<style>
+/* ============================================================
+   PORTAL DE ANALÍTICA DE DATOS — SEFIN
+   Hoja de estilos única. Paleta corporativa: Azul / Azul suave / Dorado / Blanco / Gris
+   ============================================================ */
+
+:root{
+  /* --- Paleta corporativa obligatoria --- */
+  --azul:            #0B2E58;   /* Azul primario institucional */
+  --azul-oscuro:     #071C38;   /* Variante oscura del azul primario (para gradientes/hover) */
+  --azul-suave:      #4E7BB5;   /* Azul secundario / suave */
+  --azul-suave-tenue:#EAF0F8;   /* Azul suave muy claro, para fondos */
+  --dorado:          #C7A03C;   /* Color de acento */
+  --dorado-claro:    #E4C878;
+  --blanco:          #FFFFFF;
+  --gris-50:         #F6F7F9;
+  --gris-100:        #EAECF0;
+  --gris-300:        #C9CFD8;
+  --gris-500:        #7C8695;
+  --gris-700:        #3F4756;
+  --gris-900:        #171C24;
+
+  --whatsapp:        #25D366;  /* color oficial reservado exclusivamente al botón de WhatsApp */
+
+  --fuente-display:  'Fraunces', Georgia, serif;
+  --fuente-texto:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radio-tarjeta:   14px;
+  --radio-boton:     10px;
+  --sombra-suave:    0 4px 18px rgba(11,46,88,0.08);
+  --sombra-media:    0 10px 30px rgba(11,46,88,0.14);
+  --sombra-fuerte:   0 20px 50px rgba(11,46,88,0.24);
+
+  --nav-alto:        76px;
+  --transicion:      .35s cubic-bezier(.4,0,.2,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--fuente-texto);
+  color:var(--gris-900);
+  background:var(--gris-50);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ font-family:var(--fuente-display); margin:0 0 .5em; color:var(--azul); font-weight:600; }
+p{ margin:0 0 1em; color:var(--gris-700); }
+
+:focus-visible{
+  outline:3px solid var(--dorado);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+
+.contenedor{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ===================== BARRA DE NAVEGACIÓN ===================== */
+.nav-principal{
+  position:fixed;
+  top:0; left:0; right:0;
+  height:var(--nav-alto);
+  z-index:900;
+  background:var(--blanco);
+  box-shadow:0 2px 18px rgba(11,46,88,0.08);
+  display:flex;
+  align-items:center;
+}
+.nav-interior{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.nav-marca{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--fuente-display);
+  font-weight:600;
+  font-size:1.05rem;
+  color:var(--azul);
+  white-space:nowrap;
+}
+.nav-marca .logo-caja{
+  width:44px; height:44px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-suave));
+  display:flex; align-items:center; justify-content:center;
+  color:var(--dorado-claro);
+  font-size:1.2rem;
+  flex-shrink:0;
+  overflow:hidden;
+}
+.nav-marca .logo-caja img{ width:100%; height:100%; object-fit:contain; }
+.nav-marca small{
+  display:block;
+  font-family:var(--fuente-texto);
+  font-weight:500;
+  font-size:.68rem;
+  color:var(--gris-500);
+  letter-spacing:.02em;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.nav-links button{
+  background:none;
+  border:none;
+  padding:10px 16px;
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--gris-700);
+  border-radius:8px;
+  transition:color var(--transicion), background var(--transicion);
+  position:relative;
+}
+.nav-links button:hover{ color:var(--azul); background:var(--azul-suave-tenue); }
+.nav-links button.activo{ color:var(--azul); }
+.nav-links button.activo::after{
+  content:"";
+  position:absolute;
+  left:16px; right:16px; bottom:2px;
+  height:3px;
+  border-radius:3px;
+  background:var(--dorado);
+}
+
+.nav-toggle{
+  display:none;
+  width:44px; height:44px;
+  border:none;
+  background:var(--azul-suave-tenue);
+  border-radius:8px;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  color:var(--azul);
+}
+
+@media (max-width:920px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:fixed;
+    top:var(--nav-alto);
+    left:0; right:0;
+    flex-direction:column;
+    align-items:stretch;
+    background:var(--blanco);
+    box-shadow:0 12px 24px rgba(11,46,88,0.12);
+    padding:8px 16px 20px;
+    gap:2px;
+    transform:translateY(-12px);
+    opacity:0;
+    pointer-events:none;
+    transition:transform var(--transicion), opacity var(--transicion);
+  }
+  .nav-links.abierto{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .nav-links button{ text-align:left; padding:14px 12px; }
+  .nav-links button.activo::after{ display:none; }
+  .nav-links button.activo{ background:var(--azul-suave-tenue); }
+}
+
+/* ===================== VISTAS (SPA) ===================== */
+main{ margin-top:var(--nav-alto); min-height:70vh; }
+
+.vista{
+  display:none;
+  min-height:calc(100vh - var(--nav-alto));
+  padding:52px 0 90px;
+  animation:apareceVista .45s ease;
+}
+.vista.activa{ display:block; }
+
+@keyframes apareceVista{
+  from{ opacity:0; transform:translateY(14px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.encabezado-vista{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 46px;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--azul-suave);
+  font-weight:700;
+  font-size:.82rem;
+  margin-bottom:10px;
+}
+.eyebrow i{ color:var(--dorado); }
+.encabezado-vista h2{ font-size:clamp(1.7rem,3.4vw,2.5rem); }
+.encabezado-vista p{ font-size:1.05rem; }
+
+/* ===================== HERO / INICIO ===================== */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(199,160,60,0.18), transparent 45%),
+    linear-gradient(135deg,var(--azul-oscuro) 0%, var(--azul) 60%, var(--azul-suave) 130%);
+  border-radius:22px;
+  margin:0 24px;
+  padding:clamp(48px,7vw,88px) clamp(24px,6vw,72px);
+  color:var(--blanco);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:48px;
+  align-items:center;
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:34px 34px;
+  opacity:.35;
+  pointer-events:none;
+}
+.hero-texto{ position:relative; z-index:1; }
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(228,200,120,.4);
+  padding:7px 16px;
+  border-radius:999px;
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--dorado-claro);
+  margin-bottom:22px;
+}
+.hero h1{
+  color:var(--blanco);
+  font-size:clamp(2.1rem,4.4vw,3.4rem);
+  line-height:1.12;
+  margin-bottom:20px;
+  font-weight:600;
+}
+.hero h1 em{ font-style:normal; color:var(--dorado-claro); }
+.hero p.lead{
+  color:rgba(255,255,255,.82);
+  font-size:1.08rem;
+  max-width:52ch;
+  margin-bottom:32px;
+}
+.hero-botones{ display:flex; gap:14px; flex-wrap:wrap; }
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px;
+  border-radius:var(--radio-boton);
+  font-weight:700;
+  font-size:.94rem;
+  border:2px solid transparent;
+  transition:transform var(--transicion), box-shadow var(--transicion), background var(--transicion), color var(--transicion);
+}
+.btn:active{ transform:translateY(1px); }
+.btn-dorado{
+  background:linear-gradient(135deg,var(--dorado-claro),var(--dorado));
+  color:var(--azul-oscuro);
+  box-shadow:0 10px 24px rgba(199,160,60,.35);
+}
+.btn-dorado:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(199,160,60,.45); }
+.btn-fantasma{
+  background:transparent;
+  color:var(--blanco);
+  border-color:rgba(255,255,255,.5);
+}
+.btn-fantasma:hover{ background:rgba(255,255,255,.12); border-color:var(--blanco); }
+.btn-azul{
+  background:var(--azul);
+  color:var(--blanco);
+  box-shadow:var(--sombra-suave);
+}
+.btn-azul:hover{ background:var(--azul-oscuro); transform:translateY(-2px); box-shadow:var(--sombra-media); }
+.btn-borde{
+  background:var(--blanco);
+  color:var(--azul);
+  border-color:var(--gris-100);
+}
+.btn-borde:hover{ border-color:var(--azul-suave); color:var(--azul); background:var(--azul-suave-tenue); }
+.btn-sm{ padding:9px 16px; font-size:.82rem; }
+.btn:disabled{ opacity:.6; cursor:not-allowed; }
+
+.hero-panel{
+  position:relative; z-index:1;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
+  padding:28px;
+  backdrop-filter:blur(6px);
+}
+.hero-panel .logo-grande{
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:12px;
+  background:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.02));
+  border:1px dashed rgba(228,200,120,.5);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px;
+  color:rgba(255,255,255,.85);
+  overflow:hidden;
+  margin-bottom:20px;
+}
+.hero-panel .logo-grande img{ width:100%; height:100%; object-fit:contain; }
+.hero-panel .logo-grande i{ font-size:2.4rem; color:var(--dorado-claro); }
+.hero-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.hero-kpi{ text-align:center; }
+.hero-kpi strong{ display:block; font-family:var(--fuente-display); font-size:1.5rem; color:var(--dorado-claro); }
+.hero-kpi span{ font-size:.72rem; color:rgba(255,255,255,.7); }
+
+@media (max-width:900px){
+  .hero{ grid-template-columns:1fr; margin:0 12px; padding:40px 22px; }
+  .hero-panel{ order:-1; }
+}
+
+/* ===================== SECCIÓN "SOBRE" ===================== */
+.pilares{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin:44px 0 8px;
+}
+.pilar{
+  background:var(--blanco);
+  border-radius:var(--radio-tarjeta);
+  padding:26px;
+  box-shadow:var(--sombra-suave);
+  border-top:3px solid var(--dorado);
+  transition:transform var(--transicion), box-shadow var(--transicion);
+}
+.pilar:hover{ transform:translateY(-4px); box-shadow:var(--sombra-media); }
+.pilar .num{
+  width:38px; height:38px;
+  border-radius:10px;
+  background:var(--azul-suave-tenue);
+  color:var(--azul);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700;
+  margin-bottom:14px;
+}
+.pilar h4{ font-size:1.08rem; margin-bottom:8px; }
+.pilar p{ font-size:.92rem; margin-bottom:0; }
+
+@media (max-width:860px){ .pilares{ grid-template-columns:1fr; } }
+
+.subseccion{ margin-top:64px; }
+.subseccion > h3{
+  text-align:center;
+  font-size:1.5rem;
+  margin-bottom:34px;
+}
+
+.beneficios-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.beneficio{
+  background:var(--blanco);
+  border-radius:var(--radio-tarjeta);
+  padding:24px;
+  box-shadow:var(--sombra-suave);
+  transition:transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+  border:1px solid var(--gris-100);
+}
+.beneficio:hover{ transform:translateY(-4px); box-shadow:var(--sombra-media); border-color:var(--dorado-claro); }
+.beneficio i{
+  width:46px; height:46px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-suave));
+  color:var(--blanco);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.15rem;
+  margin-bottom:14px;
+}
+.beneficio h4{ font-size:1rem; margin-bottom:6px; }
+.beneficio p{ font-size:.88rem; margin-bottom:0; }
+
+@media (max-width:860px){ .beneficios-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .beneficios-grid{ grid-template-columns:1fr; } }
+
+/* FAQ (acordeón) */
+.faq-lista{ max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item{
+  background:var(--blanco);
+  border:1px solid var(--gris-100);
+  border-radius:12px;
+  overflow:hidden;
+}
+.faq-pregunta{
+  width:100%;
+  background:none; border:none;
+  padding:18px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+  font-weight:700;
+  color:var(--azul);
+  font-size:.96rem;
+  text-align:left;
+}
+.faq-pregunta i{ color:var(--dorado); transition:transform var(--transicion); flex-shrink:0; }
+.faq-item.abierto .faq-pregunta i{ transform:rotate(180deg); }
+.faq-respuesta{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height var(--transicion);
+  padding:0 20px;
+}
+.faq-item.abierto .faq-respuesta{ max-height:220px; padding:0 20px 18px; }
+.faq-respuesta p{ font-size:.9rem; margin:0; }
+
+/* ===================== TABLEROS / DASHBOARD ===================== */
+.filtros-dash{
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center;
+  margin-bottom:36px;
+}
+.chip-filtro{
+  padding:9px 18px;
+  border-radius:999px;
+  border:1.5px solid var(--gris-100);
+  background:var(--blanco);
+  font-size:.84rem;
+  font-weight:600;
+  color:var(--gris-700);
+  transition:all var(--transicion);
+}
+.chip-filtro:hover{ border-color:var(--azul-suave); color:var(--azul); }
+.chip-filtro.activo{ background:var(--azul); border-color:var(--azul); color:var(--blanco); }
+
+.grid-dash{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:26px;
+}
+.tarjeta-dash{
+  background:var(--blanco);
+  border-radius:var(--radio-tarjeta);
+  overflow:hidden;
+  box-shadow:var(--sombra-suave);
+  border:1px solid var(--gris-100);
+  display:flex; flex-direction:column;
+  transition:transform var(--transicion), box-shadow var(--transicion);
+}
+.tarjeta-dash:hover{ transform:translateY(-6px); box-shadow:var(--sombra-fuerte); }
+.tarjeta-dash .miniatura{
+  aspect-ratio:16/10;
+  background:linear-gradient(135deg,var(--azul-suave-tenue),var(--blanco));
+  display:flex; align-items:center; justify-content:center;
+  color:var(--azul-suave);
+  font-size:2.1rem;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--gris-100);
+}
+.tarjeta-dash .miniatura img{ width:100%; height:100%; object-fit:cover; }
+.tarjeta-dash .miniatura .badge{
+  position:absolute; top:12px; left:12px;
+  background:var(--azul);
+  color:var(--blanco);
+  font-size:.68rem;
+  font-weight:700;
+  padding:5px 10px;
+  border-radius:999px;
+}
+.tarjeta-dash .cuerpo{ padding:20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+.tarjeta-dash h4{ font-size:1.04rem; margin-bottom:8px; }
+.tarjeta-dash p{ font-size:.87rem; flex:1; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.tarjeta-dash .pie-tarjeta{ display:flex; align-items:center; justify-content:space-between; margin-top:14px; gap:10px; }
+.contador-visitas{ font-size:.75rem; color:var(--gris-500); display:flex; align-items:center; gap:6px; }
+
+/* Modal de dashboard */
+.overlay-modal{
+  position:fixed; inset:0;
+  background:rgba(7,28,56,.72);
+  backdrop-filter:blur(3px);
+  z-index:1000;
+  display:none;
+  align-items:center; justify-content:center;
+  padding:22px;
+}
+.overlay-modal.visible{ display:flex; animation:apareceOverlay .3s ease; }
+@keyframes apareceOverlay{ from{ opacity:0; } to{ opacity:1; } }
+
+.modal-dash{
+  background:var(--blanco);
+  width:100%; max-width:1080px;
+  height:min(88vh,760px);
+  border-radius:16px;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow:var(--sombra-fuerte);
+  transform:scale(.96);
+  animation:apareceModal .32s cubic-bezier(.34,1.4,.64,1) forwards;
+}
+@keyframes apareceModal{ to{ transform:scale(1); } }
+
+.modal-encabezado{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 22px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-suave));
+  color:var(--blanco);
+  gap:14px;
+}
+.modal-encabezado h3{ color:var(--blanco); margin:0; font-size:1.05rem; }
+.modal-acciones{ display:flex; align-items:center; gap:8px; }
+.icono-btn{
+  width:38px; height:38px;
+  border:none; border-radius:9px;
+  background:rgba(255,255,255,.15);
+  color:var(--blanco);
+  display:flex; align-items:center; justify-content:center;
+  transition:background var(--transicion);
+}
+.icono-btn:hover{ background:rgba(255,255,255,.3); }
+.modal-cuerpo{ flex:1; background:var(--gris-900); position:relative; }
+.modal-cuerpo iframe{ width:100%; height:100%; border:none; }
+
+/* ===================== ACCESO A PLATAFORMAS ===================== */
+.grid-plataformas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.tarjeta-plataforma{
+  background:var(--blanco);
+  border:1px solid var(--gris-100);
+  border-radius:var(--radio-tarjeta);
+  padding:24px;
+  display:flex; flex-direction:column; gap:14px;
+  box-shadow:var(--sombra-suave);
+  transition:transform var(--transicion), box-shadow var(--transicion);
+}
+.tarjeta-plataforma:hover{ transform:translateY(-4px); box-shadow:var(--sombra-media); }
+.tarjeta-plataforma .icono-plat{
+  width:44px; height:44px;
+  border-radius:11px;
+  background:var(--azul-suave-tenue);
+  color:var(--azul);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem;
+}
+.tarjeta-plataforma h4{ font-size:.98rem; margin-bottom:0; }
+.tarjeta-plataforma .enlace-plat{
+  margin-top:auto;
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:700; color:var(--azul); font-size:.86rem;
+}
+.tarjeta-plataforma .enlace-plat i{ transition:transform var(--transicion); }
+.tarjeta-plataforma:hover .enlace-plat i{ transform:translateX(4px); }
+
+/* ===================== UBICACIÓN ===================== */
+.bloque-mapa{
+  background:var(--blanco);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--sombra-media);
+  border:1px solid var(--gris-100);
+}
+.mapa-responsive{ position:relative; width:100%; padding-bottom:56.25%; height:0; }
+.mapa-responsive iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+.mapa-info{
+  padding:24px 28px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  border-top:1px solid var(--gris-100);
+}
+.mapa-info .item i{ color:var(--dorado); margin-right:8px; }
+.mapa-info .item strong{ display:block; color:var(--azul); font-size:.82rem; margin-bottom:3px; }
+.mapa-info .item span{ font-size:.86rem; color:var(--gris-700); }
+
+/* ===================== CONTACTO ===================== */
+.grid-contacto{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.tarjeta-contacto{
+  background:var(--blanco);
+  border-radius:var(--radio-tarjeta);
+  padding:30px;
+  box-shadow:var(--sombra-suave);
+  border:1px solid var(--gris-100);
+}
+.lista-contacto{ display:flex; flex-direction:column; gap:18px; }
+.lista-contacto li{ display:flex; gap:14px; align-items:flex-start; }
+.lista-contacto i{
+  width:40px; height:40px; flex-shrink:0;
+  border-radius:10px;
+  background:var(--azul-suave-tenue);
+  color:var(--azul);
+  display:flex; align-items:center; justify-content:center;
+}
+.lista-contacto strong{ display:block; color:var(--azul); font-size:.86rem; }
+.lista-contacto span, .lista-contacto a{ font-size:.9rem; color:var(--gris-700); }
+
+.redes-sociales{ display:flex; gap:10px; margin-top:24px; flex-wrap:wrap; }
+.red-social{
+  width:42px; height:42px;
+  border-radius:10px;
+  background:var(--azul-suave-tenue);
+  color:var(--azul);
+  display:flex; align-items:center; justify-content:center;
+  transition:all var(--transicion);
+}
+.red-social:hover{ background:var(--azul); color:var(--blanco); transform:translateY(-3px); }
+
+.form-grupo{ margin-bottom:18px; }
+.form-grupo label{ display:block; font-size:.84rem; font-weight:700; color:var(--azul); margin-bottom:7px; }
+.form-grupo input, .form-grupo textarea, .form-grupo select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:9px;
+  border:1.5px solid var(--gris-100);
+  background:var(--gris-50);
+  font-family:inherit;
+  font-size:.92rem;
+  color:var(--gris-900);
+  transition:border-color var(--transicion), background var(--transicion);
+}
+.form-grupo input:focus, .form-grupo textarea:focus, .form-grupo select:focus{
+  outline:none;
+  border-color:var(--azul-suave);
+  background:var(--blanco);
+}
+.form-nota{ font-size:.78rem; color:var(--gris-500); margin-top:14px; }
+.form-estado{ font-size:.85rem; margin-top:10px; font-weight:600; min-height:1.2em; }
+.form-estado.ok{ color:#1B7A43; }
+.form-estado.error{ color:#B23A3A; }
+
+@media (max-width:860px){ .grid-contacto{ grid-template-columns:1fr; } }
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:var(--azul-oscuro);
+  color:rgba(255,255,255,.75);
+  padding:44px 0 22px;
+  margin-top:40px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:32px;
+  padding-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.footer-marca{ display:flex; align-items:center; gap:10px; color:var(--blanco); font-family:var(--fuente-display); font-size:1.05rem; margin-bottom:12px; }
+.footer-marca .logo-caja{ width:38px; height:38px; border-radius:9px; background:linear-gradient(135deg,var(--azul-suave),var(--dorado)); display:flex; align-items:center; justify-content:center; color:var(--azul-oscuro); }
+footer h5{ color:var(--dorado-claro); font-size:.85rem; margin-bottom:14px; letter-spacing:.02em; }
+footer ul li{ margin-bottom:9px; font-size:.86rem; }
+footer ul li button, footer ul li a{ color:rgba(255,255,255,.72); transition:color var(--transicion); }
+footer ul li button:hover, footer ul li a:hover{ color:var(--dorado-claro); }
+.footer-fin{ padding-top:20px; display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; font-size:.78rem; color:rgba(255,255,255,.55); }
+
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; } }
+
+/* ===================== BOTÓN FLOTANTE WHATSAPP ===================== */
+.flotante-whatsapp{
+  position:fixed;
+  right:24px; bottom:24px;
+  width:60px; height:60px;
+  border-radius:50%;
+  background:var(--whatsapp);
+  color:var(--blanco);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.7rem;
+  box-shadow:0 8px 22px rgba(37,211,102,.45);
+  border:none;
+  z-index:850;
+  transition:transform var(--transicion), box-shadow var(--transicion);
+}
+.flotante-whatsapp:hover{ transform:scale(1.08); box-shadow:0 12px 30px rgba(37,211,102,.6); }
+
+/* ===================== CHATBOT ===================== */
+.flotante-chatbot{
+  position:fixed;
+  right:24px; bottom:96px;
+  width:60px; height:60px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--azul),var(--azul-suave));
+  color:var(--blanco);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem;
+  border:none;
+  box-shadow:0 8px 22px rgba(11,46,88,.4);
+  z-index:850;
+  transition:transform var(--transicion), box-shadow var(--transicion);
+}
+.flotante-chatbot:hover{ transform:scale(1.08); box-shadow:0 12px 30px rgba(11,46,88,.5); }
+.flotante-chatbot .punto-nuevo{
+  position:absolute; top:6px; right:6px;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--dorado); border:2px solid var(--blanco);
+}
+
+.ventana-chat{
+  position:fixed;
+  right:24px; bottom:96px;
+  width:380px;
+  max-width:calc(100vw - 32px);
+  height:560px;
+  max-height:calc(100vh - 130px);
+  background:var(--blanco);
+  border-radius:18px;
+  box-shadow:var(--sombra-fuerte);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  z-index:950;
+  transform-origin:bottom right;
+  animation:apareceChat .3s cubic-bezier(.34,1.35,.64,1);
+}
+.ventana-chat.visible{ display:flex; }
+@keyframes apareceChat{ from{ opacity:0; transform:scale(.9) translateY(14px); } to{ opacity:1; transform:scale(1) translateY(0); } }
+
+.chat-encabezado{
+  background:linear-gradient(135deg,var(--azul),var(--azul-suave));
+  color:var(--blanco);
+  padding:16px 18px;
+  display:flex; align-items:center; gap:12px;
+}
+.chat-avatar{
+  width:42px; height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.16);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.25rem;
+  border:1.5px solid rgba(228,200,120,.6);
+  flex-shrink:0;
+}
+.chat-titulo{ flex:1; min-width:0; }
+.chat-titulo strong{ display:block; font-size:.95rem; }
+.chat-titulo span{ font-size:.72rem; color:rgba(255,255,255,.75); display:flex; align-items:center; gap:5px; }
+.chat-titulo span::before{ content:""; width:7px; height:7px; border-radius:50%; background:#3FE07C; display:inline-block; }
+.chat-header-acciones{ display:flex; gap:6px; }
+
+.chat-cuerpo{
+  flex:1;
+  overflow-y:auto;
+  padding:18px;
+  display:flex; flex-direction:column; gap:14px;
+  background:var(--gris-50);
+}
+.msg{ display:flex; gap:10px; max-width:88%; }
+.msg-bot{ align-self:flex-start; }
+.msg-usuario{ align-self:flex-end; flex-direction:row-reverse; }
+.msg-avatar{
+  width:30px; height:30px; border-radius:50%;
+  background:var(--azul); color:var(--blanco);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.85rem; flex-shrink:0;
+}
+.msg-usuario .msg-avatar{ background:var(--dorado); color:var(--azul-oscuro); }
+.msg-burbuja{
+  background:var(--blanco);
+  border:1px solid var(--gris-100);
+  padding:11px 14px;
+  border-radius:14px 14px 14px 3px;
+  font-size:.87rem;
+  color:var(--gris-900);
+  box-shadow:0 2px 8px rgba(11,46,88,.05);
+}
+.msg-usuario .msg-burbuja{
+  background:var(--azul);
+  color:var(--blanco);
+  border-color:var(--azul);
+  border-radius:14px 14px 3px 14px;
+}
+
+.chips-sugeridas{ display:flex; flex-wrap:wrap; gap:8px; margin-top:2px; }
+.chip-sugerida{
+  background:var(--blanco);
+  border:1.5px solid var(--azul-suave-tenue);
+  color:var(--azul);
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:600;
+  text-align:left;
+  transition:all var(--transicion);
+}
+.chip-sugerida:hover{ background:var(--azul); color:var(--blanco); border-color:var(--azul); transform:translateY(-2px); }
+
+.escribiendo{ display:flex; gap:4px; align-items:center; padding:4px 2px; }
+.escribiendo span{
+  width:6px; height:6px; border-radius:50%; background:var(--azul-suave);
+  animation:parpadeo 1.2s infinite ease-in-out;
+}
+.escribiendo span:nth-child(2){ animation-delay:.15s; }
+.escribiendo span:nth-child(3){ animation-delay:.3s; }
+@keyframes parpadeo{ 0%,80%,100%{ opacity:.25; transform:scale(.8); } 40%{ opacity:1; transform:scale(1); } }
+
+.chat-pie{
+  padding:12px 14px;
+  border-top:1px solid var(--gris-100);
+  display:flex; gap:8px; align-items:center;
+  background:var(--blanco);
+}
+.chat-pie input{
+  flex:1;
+  border:1.5px solid var(--gris-100);
+  background:var(--gris-50);
+  border-radius:999px;
+  padding:11px 16px;
+  font-size:.87rem;
+  font-family:inherit;
+}
+.chat-pie input:focus{ outline:none; border-color:var(--azul-suave); background:var(--blanco); }
+.chat-pie button{
+  width:42px; height:42px; border-radius:50%;
+  border:none; background:var(--azul); color:var(--blanco);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  transition:background var(--transicion);
+}
+.chat-pie button:hover{ background:var(--azul-oscuro); }
+
+@media (max-width:460px){
+  .ventana-chat{ right:12px; left:12px; width:auto; bottom:88px; }
+  .flotante-whatsapp{ right:16px; bottom:16px; }
+  .flotante-chatbot{ right:16px; bottom:86px; }
+}
+
+.oculto-visualmente{
+  position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;
+}
+
+/* Scrollbar sutil */
+.chat-cuerpo::-webkit-scrollbar{ width:6px; }
+.chat-cuerpo::-webkit-scrollbar-thumb{ background:var(--gris-300); border-radius:6px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVEGACIÓN ===================== -->
+<nav class="nav-principal">
+  <div class="nav-interior">
+    <div class="nav-marca">
+      <span class="logo-caja"><img src="imagenes/logo-SEFIN.png" alt="" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-landmark-dome\'></i>'"></span>
+      <span>
+        Portal de Analítica<br>
+        <small>Secretaría de Finanzas · Honduras</small>
+      </span>
+    </div>
+    <button class="nav-toggle" id="btnNavToggle" aria-label="Abrir menú" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks" role="menubar">
+      <li role="none"><button role="menuitem" class="enlace-vista activo" data-vista="inicio">Inicio</button></li>
+      <li role="none"><button role="menuitem" class="enlace-vista" data-vista="sobre">Sobre la Analítica de Datos en SEFIN</button></li>
+      <li role="none"><button role="menuitem" class="enlace-vista" data-vista="dashboard">Tableros/Dashboard</button></li>
+      <li role="none"><button role="menuitem" class="enlace-vista" data-vista="plataformas">Acceso a Plataformas</button></li>
+      <li role="none"><button role="menuitem" class="enlace-vista" data-vista="ubicacion">Ubicación</button></li>
+      <li role="none"><button role="menuitem" class="enlace-vista" data-vista="contacto">Contacto</button></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ===================== VISTA: INICIO ===================== -->
+  <section class="vista activa" id="vista-inicio" data-vista="inicio">
+    <div class="contenedor">
+      <div class="hero">
+        <div class="hero-texto">
+          <span class="hero-tag"><i class="fa-solid fa-chart-line"></i> Finanzas públicas explicadas con datos claros</span>
+          <h1>Monitoreo Integral del <em>Presupuesto de la República</em></h1>
+          <p class="lead">Transformamos los complejos registros contables del Estado en una herramienta visual, dinámica e interactiva. Explore con total transparencia el ciclo completo del dinero público: desde su recaudación hasta su impacto directo en la sociedad.</p>
+          <div class="hero-botones">
+            <button class="btn btn-dorado" data-ir-vista="dashboard"><i class="fa-solid fa-chart-pie"></i> Explorar Tableros</button>
+            <button class="btn btn-fantasma" data-ir-vista="sobre"><i class="fa-solid fa-circle-info"></i> Conocer el portal</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="logo-grande">
+            <img src="imagenes/logo-SEFIN.png" alt="Logo SEFIN" onerror="this.parentElement.innerHTML='<i class=\'fa-solid fa-building-columns\'></i><span style=\'font-size:.8rem;color:rgba(255,255,255,.75)\'>imagenes/logo-SEFIN.png</span>'">
+          </div>
+          <div class="hero-kpis">
+            <div class="hero-kpi"><strong>7</strong><span>Módulos financieros</span></div>
+            <div class="hero-kpi"><strong>3</strong><span>Pilares analíticos</span></div>
+            <div class="hero-kpi"><strong>100%</strong><span>Datos auditables</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilares">
+        <div class="pilar">
+          <div class="num">1</div>
+          <h4>Visión macro y sostenibilidad</h4>
+          <p>Ejecución Presupuestaria General y Comparativo Histórico de Ingresos y Egresos: la salud financiera del país de un vistazo.</p>
+        </div>
+        <div class="pilar">
+          <div class="num">2</div>
+          <h4>Origen de los recursos</h4>
+          <p>Cómo se financia el sector público: impuestos, tasas y la relación entre fondos nacionales y financiamiento externo.</p>
+        </div>
+        <div class="pilar">
+          <div class="num">3</div>
+          <h4>Destino del gasto e inversión</h4>
+          <p>Qué instituciones absorben los recursos y qué porcentaje se invierte en infraestructura, salud, educación y desarrollo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: SOBRE LA ANALÍTICA DE DATOS EN SEFIN ===================== -->
+  <section class="vista" id="vista-sobre" data-vista="sobre">
+    <div class="contenedor">
+      <div class="encabezado-vista">
+        <span class="eyebrow"><i class="fa-solid fa-book-open"></i> Sobre el portal</span>
+        <h2>Sobre la Analítica de Datos en SEFIN</h2>
+        <p>Bienvenido al espacio de transparencia de la Secretaría de Finanzas, donde transformamos los números del presupuesto en información visual y accesible para todos los ciudadanos. A través de siete módulos financieros complementarios podrá explorar el ciclo completo del dinero público, y convertirse en un participante activo de la auditoría social basada en datos reales, auditables y confiables.</p>
+      </div>
+
+      <div class="subseccion">
+        <h3>Beneficios de utilización</h3>
+        <div class="beneficios-grid">
+          <div class="beneficio"><i class="fa-solid fa-eye"></i><h4>Transparencia total</h4><p>Acceso abierto al ciclo completo del presupuesto público, desde la recaudación hasta la inversión.</p></div>
+          <div class="beneficio"><i class="fa-solid fa-bolt"></i><h4>Datos en tiempo real</h4><p>Tableros conectados directamente a las plataformas oficiales de analítica del Estado.</p></div>
+          <div class="beneficio"><i class="fa-solid fa-universal-access"></i><h4>Accesible para todos</h4><p>Visualizaciones pensadas para todo tipo de público, sin necesidad de conocimientos técnicos.</p></div>
+          <div class="beneficio"><i class="fa-solid fa-scale-balanced"></i><h4>Decisiones informadas</h4><p>Indicadores clave que facilitan la evaluación de la sostenibilidad financiera del país.</p></div>
+          <div class="beneficio"><i class="fa-solid fa-microchip"></i><h4>Innovación tecnológica</h4><p>Uso de analítica avanzada para modernizar la gestión y comunicación de las finanzas públicas.</p></div>
+          <div class="beneficio"><i class="fa-solid fa-handshake"></i><h4>Confianza institucional</h4><p>Datos auditables que fortalecen la rendición de cuentas y la auditoría social.</p></div>
+        </div>
+      </div>
+
+      <div class="subseccion">
+        <h3>Preguntas frecuentes</h3>
+        <div class="faq-lista" id="listaFaq">
+          <!-- Generado por JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: TABLEROS / DASHBOARD ===================== -->
+  <section class="vista" id="vista-dashboard" data-vista="dashboard">
+    <div class="contenedor">
+      <div class="encabezado-vista">
+        <span class="eyebrow"><i class="fa-solid fa-table-columns"></i> Tableros interactivos</span>
+        <h2>Tableros / Dashboard</h2>
+        <p>Utilice los filtros para navegar por pilar analítico. Al abrir el detalle de un tablero, el portal registra automáticamente la visita.</p>
+      </div>
+
+      <div class="filtros-dash" id="filtrosDash">
+        <button class="chip-filtro activo" data-filtro="todos">Todos</button>
+        <button class="chip-filtro" data-filtro="macro">Visión macro</button>
+        <button class="chip-filtro" data-filtro="ingresos">Origen de ingresos</button>
+        <button class="chip-filtro" data-filtro="egresos">Gasto e inversión</button>
+      </div>
+
+      <div class="grid-dash" id="gridDashboards"><!-- Generado por JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: ACCESO A PLATAFORMAS ===================== -->
+  <section class="vista" id="vista-plataformas" data-vista="plataformas">
+    <div class="contenedor">
+      <div class="encabezado-vista">
+        <span class="eyebrow"><i class="fa-solid fa-arrow-up-right-from-square"></i> Acceso directo</span>
+        <h2>Acceso a Plataformas</h2>
+        <p>Ingrese directamente a la plataforma oficial donde se publica cada tablero, en una nueva pestaña de su navegador.</p>
+      </div>
+      <div class="grid-plataformas" id="gridPlataformas"><!-- Generado por JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: UBICACIÓN ===================== -->
+  <section class="vista" id="vista-ubicacion" data-vista="ubicacion">
+    <div class="contenedor">
+      <div class="encabezado-vista">
+        <span class="eyebrow"><i class="fa-solid fa-location-dot"></i> Visítenos</span>
+        <h2>Ubicación</h2>
+        <p>Encuéntrenos en el Centro Histórico de Tegucigalpa.</p>
+      </div>
+
+      <div class="bloque-mapa">
+        <div class="mapa-responsive">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10944.614954543182!2d-87.21797586111956!3d14.106330104219849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa2be76e0b0e5%3A0x7a6ebe52cb053ca7!2sSecretaria%20de%20Finanzas!5e0!3m2!1ses-419!2shn!4v1783382747776!5m2!1ses-419!2shn" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Ubicación de la Secretaría de Finanzas"></iframe>
+        </div>
+        <div class="mapa-info">
+          <div class="item"><i class="fa-solid fa-map-pin"></i><strong>Dirección</strong><span>Avenida Cervantes, Barrio El Jazmín, Centro Histórico, Tegucigalpa, M.D.C.</span></div>
+          <div class="item"><i class="fa-solid fa-clock"></i><strong>Horario</strong><span>Lunes a Viernes de 9:00 a.m. a 5:00 p.m.</span></div>
+          <div class="item"><i class="fa-solid fa-phone"></i><strong>Teléfono</strong><span>+504 2222-8449</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISTA: CONTACTO ===================== -->
+  <section class="vista" id="vista-contacto" data-vista="contacto">
+    <div class="contenedor">
+      <div class="encabezado-vista">
+        <span class="eyebrow"><i class="fa-solid fa-headset"></i> Estamos para ayudarle</span>
+        <h2>Contáctanos</h2>
+        <p>Escríbanos y con gusto atenderemos su consulta sobre transparencia y analítica de datos.</p>
+      </div>
+
+      <div class="grid-contacto">
+        <div class="tarjeta-contacto">
+          <ul class="lista-contacto">
+            <li><i class="fa-solid fa-phone"></i><div><strong>Teléfono</strong><span>+504 2222-8449</span></div></li>
+            <li><i class="fa-solid fa-fax"></i><div><strong>Fax</strong><span>+504 2238-7766</span></div></li>
+            <li><i class="fa-solid fa-envelope"></i><div><strong>Correo</strong><a href="mailto:transparencia@sefin.gob.hn">transparencia@sefin.gob.hn</a></div></li>
+            <li><i class="fa-solid fa-map-pin"></i><div><strong>Dirección</strong><span>Avenida Cervantes, Barrio El Jazmín, Centro Histórico, Tegucigalpa, M.D.C.</span></div></li>
+            <li><i class="fa-solid fa-clock"></i><div><strong>Horario</strong><span>Lunes a Viernes de 9:00 a.m. a 5:00 p.m.</span></div></li>
+          </ul>
+          <div class="redes-sociales">
+            <a class="red-social" href="https://x.com/SEFINHN" target="_blank" rel="noopener" aria-label="X (Twitter) SEFINHN"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="red-social" href="https://www.facebook.com/sefinhonduras" target="_blank" rel="noopener" aria-label="Facebook SEFIN Honduras"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="red-social" href="https://www.youtube.com/@SEFINHND" target="_blank" rel="noopener" aria-label="YouTube SEFIN"><i class="fa-brands fa-youtube"></i></a>
+            <a class="red-social" href="https://www.instagram.com/sefin_hn/" target="_blank" rel="noopener" aria-label="Instagram SEFIN"><i class="fa-brands fa-instagram"></i></a>
+            <a class="red-social" href="https://www.tiktok.com/@sefinhn" target="_blank" rel="noopener" aria-label="TikTok SEFIN"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="tarjeta-contacto">
+          <h4 style="margin-bottom:18px;">Envíenos un mensaje</h4>
+          <form id="formContacto" novalidate>
+            <div class="form-grupo">
+              <label for="ctNombre">Nombre completo</label>
+              <input type="text" id="ctNombre" name="nombre" required autocomplete="name">
+            </div>
+            <div class="form-grupo">
+              <label for="ctCorreo">Correo electrónico</label>
+              <input type="email" id="ctCorreo" name="correo" required autocomplete="email">
+            </div>
+            <div class="form-grupo">
+              <label for="ctMensaje">Mensaje</label>
+              <textarea id="ctMensaje" name="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-azul" style="width:100%;justify-content:center;">
+              <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+            </button>
+            <p class="form-estado" id="estadoFormContacto"></p>
+            <p class="form-nota">Este formulario es de contacto directo. Para consultas de datos, exportación o actualizaciones, comuníquese por WhatsApp.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-marca">
+          <span class="logo-caja"><i class="fa-solid fa-landmark-dome"></i></span>
+          Portal de Analítica de Datos
+        </div>
+        <p style="color:rgba(255,255,255,.65); font-size:.86rem; max-width:38ch;">Monitoreo Integral del Presupuesto de la República. Finanzas públicas explicadas con datos claros.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><button class="enlace-vista" data-vista="sobre">Sobre el portal</button></li>
+          <li><button class="enlace-vista" data-vista="dashboard">Tableros / Dashboard</button></li>
+          <li><button class="enlace-vista" data-vista="plataformas">Acceso a plataformas</button></li>
+          <li><button class="enlace-vista" data-vista="ubicacion">Ubicación</button></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:transparencia@sefin.gob.hn">transparencia@sefin.gob.hn</a></li>
+          <li><span>+504 2222-8449</span></li>
+          <li><button class="enlace-vista" data-vista="contacto">Ir a Contacto</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-fin">
+      <span>© 2026 Secretaría de Finanzas de Honduras (SEFIN). Todos los derechos reservados.</span>
+      <span>Área de Analítica de Datos</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BOTÓN FLOTANTE WHATSAPP ===================== -->
+<button class="flotante-whatsapp" id="btnWhatsapp" aria-label="Escribir por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</button>
+
+<!-- ===================== CHATBOT FLOTANTE ===================== -->
+<button class="flotante-chatbot" id="btnChatbot" aria-label="Abrir asistente de inteligencia artificial">
+  <i class="fa-solid fa-robot"></i>
+  <span class="punto-nuevo" aria-hidden="true"></span>
+</button>
+
+<div class="ventana-chat" id="ventanaChat" role="dialog" aria-label="Asistente IA" aria-modal="false">
+  <div class="chat-encabezado">
+    <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+    <div class="chat-titulo">
+      <strong>Asistente IA</strong>
+      <span>En línea</span>
+    </div>
+    <div class="chat-header-acciones">
+      <button class="icono-btn" id="btnLimpiarChat" aria-label="Limpiar conversación" title="Limpiar conversación"><i class="fa-solid fa-broom"></i></button>
+      <button class="icono-btn" id="btnMinimizarChat" aria-label="Minimizar chat" title="Minimizar"><i class="fa-solid fa-minus"></i></button>
+    </div>
+  </div>
+  <div class="chat-cuerpo" id="chatCuerpo"></div>
+  <div class="chat-pie">
+    <input type="text" id="chatInput" placeholder="Escriba su pregunta..." autocomplete="off">
+    <button id="btnEnviarChat" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ===================== MODAL DE DASHBOARD ===================== -->
+<div class="overlay-modal" id="overlayModal">
+  <div class="modal-dash" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <div class="modal-encabezado">
+      <h3 id="modalTitulo">Nombre del tablero</h3>
+      <div class="modal-acciones">
+        <button class="icono-btn" id="btnPantallaCompleta" title="Pantalla completa" aria-label="Ver en pantalla completa"><i class="fa-solid fa-expand"></i></button>
+        <button class="icono-btn" id="btnCerrarModal" title="Cerrar" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div class="modal-cuerpo" id="modalCuerpo">
+      <iframe id="iframeModal" src="" title="Visor de tablero" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   PORTAL DE ANALÍTICA DE DATOS — SEFIN
+   Script principal (navegación SPA, tableros, chatbot, formularios)
+   ============================================================ */
+(function(){
+  "use strict";
+
+  /* --------------------------------------------------------
+     0. CONSTANTE DE INTEGRACIÓN CON GOOGLE APPS SCRIPT
+     El docente/administrador debe reemplazar esta URL luego de
+     publicar el proyecto de Apps Script (CodigoAppsScript.gs)
+     como aplicación web.
+  -------------------------------------------------------- */
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzjNMSJRLjWtLChc6Bi0RxH6oIoyiJMoeVN2k2fGeDzF-5ORGXhTsV80-DttGys_FBY2g/exec";
+
+  /* --------------------------------------------------------
+     1. DATOS DE LOS TABLEROS (según información proporcionada)
+  -------------------------------------------------------- */
+  const DASHBOARDS = [
+    {
+      id: "ejecucion-acumulada",
+      imagen: "imagenes/ejecucionacumulada.png",
+      nombre: "Ejecución Acumulada",
+      categoria: "macro",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiYTg2NjljNDctNmNmNS00YmNiLWE0MjAtZDI1ZTc4ZGYwZThmIiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Panorama financiero actualizado de la gestión pública: gasto operativo, inversión en obras públicas y recaudación de ingresos, a través de indicadores clave de rendimiento (KPIs)."
+    },
+    {
+      id: "programacion-inversion",
+      imagen: "imagenes/programacioninversionpublica.png",
+      nombre: "Programación de Inversión Pública",
+      categoria: "egresos",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiMTZmNjA0YTktODdkNS00NWI2LWJjMDAtZDA1NWJhNGZkMDQyIiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Asignación, vigencia y avance del capital destinado a proyectos estratégicos del país: infraestructura, bienes duraderos y transferencias para el desarrollo nacional."
+    },
+    {
+      id: "grupo-gasto",
+      imagen: "imagenes/ejecucionpptoegresosgrupo.png",
+      nombre: "Grupo de Gasto",
+      categoria: "egresos",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiZTdhMWY3NjEtYTBmZS00YzE2LTkzMjAtZDRhNDI5MGRkNjAwIiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Radiografía detallada del gasto público: cómo se distribuyen y consumen los recursos aprobados para el funcionamiento del Estado, el pago de la deuda y los servicios esenciales."
+    },
+    {
+      id: "egresos-nivel-institucional",
+      imagen: "imagenes/ejecucionpptonivelinstitucional.png",
+      nombre: "Ejecución de Egresos a Nivel de Instituciones",
+      categoria: "egresos",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiZjk4M2E0YmYtMmI4YS00MDU0LWJkNTgtMzg5MjY3ZmY3NzQ0IiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Distribución y avance del gasto público por los diferentes niveles del sector público. Identifica qué instituciones concentran mayor cantidad de recursos y su progreso presupuestario."
+    },
+    {
+      id: "egresos-fuente-institucion",
+      imagen: "imagenes/egresosporfuenteacumnivelinst.png",
+      nombre: "Ejecución de Egresos por Fuente Acumulado por Nivel de Instituciones",
+      categoria: "ingresos",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiZjA5OGNlOWItYTc5Yi00ZDNmLTlkMTUtYTA0ODNkOTljZmVjIiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Origen del financiamiento del Estado, clasificando los recursos según su procedencia: fuentes internas (fondos nacionales) y externas (financiamiento internacional o donaciones)."
+    },
+    {
+      id: "comparativo-ingresos-egresos",
+      imagen: "imagenes/comparativoingresosegresos.png",
+      nombre: "Comparativo de Ingresos y Egresos del Presupuesto General",
+      categoria: "macro",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiYjcyOWMxNzItODAyOC00OThjLThhMzYtNmQ5ZjA2MzNiNTY2IiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Perspectiva histórica y analítica que compara el dinero recaudado (Ingresos) frente al dinero gastado (Egresos) a lo largo de los años fiscales: sostenibilidad y tendencia del balance público."
+    },
+    {
+      id: "ingresos-sector-tipo-rubro-fuente",
+      imagen: "imagenes/ingresossectortiporubrofuente.png",
+      nombre: "Ejecución del Presupuesto de Ingresos por Sector – Tipo – Rubro – Fuente",
+      categoria: "ingresos",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiNGU3ZTEwNWItMTRhMS00ZDc4LTgzMzMtNDNjNGM2ODljNzJhIiwidCI6IjczZWMzNzI1LWI0NGItNGJmOC05MzNmLTdiN2MxYTc2YWQ3ZCIsImMiOjR9",
+      descripcion: "Radiografía profunda de la recaudación fiscal y el financiamiento del Estado: vías de captación de recursos, desde su origen macroeconómico hasta los rubros impositivos específicos."
+    }
+  ];
+
+  const NOMBRES_FILTRO = { macro:"Visión macro", ingresos:"Origen de ingresos", egresos:"Gasto e inversión" };
+
+  /* --------------------------------------------------------
+     2. NAVEGACIÓN ENTRE VISTAS (SPA)
+  -------------------------------------------------------- */
+  const vistas = document.querySelectorAll(".vista");
+  const enlacesVista = document.querySelectorAll(".enlace-vista");
+  const navLinks = document.getElementById("navLinks");
+  const btnNavToggle = document.getElementById("btnNavToggle");
+
+  function irAVista(nombreVista){
+    vistas.forEach(v => v.classList.toggle("activa", v.dataset.vista === nombreVista));
+    document.querySelectorAll(".nav-links .enlace-vista").forEach(btn=>{
+      btn.classList.toggle("activo", btn.dataset.vista === nombreVista);
+    });
+    window.scrollTo({ top:0, behavior:"smooth" });
+    navLinks.classList.remove("abierto");
+    btnNavToggle.setAttribute("aria-expanded","false");
+  }
+
+  enlacesVista.forEach(el=>{
+    el.addEventListener("click", ()=> irAVista(el.dataset.vista));
+  });
+  document.querySelectorAll("[data-ir-vista]").forEach(el=>{
+    el.addEventListener("click", ()=> irAVista(el.dataset.irVista));
+  });
+
+  btnNavToggle.addEventListener("click", ()=>{
+    const abierto = navLinks.classList.toggle("abierto");
+    btnNavToggle.setAttribute("aria-expanded", abierto ? "true":"false");
+  });
+
+  /* --------------------------------------------------------
+     3. RENDER DE TARJETAS DE DASHBOARD
+  -------------------------------------------------------- */
+  const gridDashboards = document.getElementById("gridDashboards");
+  const gridPlataformas = document.getElementById("gridPlataformas");
+
+  function iconoParaCategoria(cat){
+    if(cat === "macro") return "fa-chart-simple";
+    if(cat === "ingresos") return "fa-sack-dollar";
+    return "fa-building-columns";
+  }
+
+  function renderDashboards(filtro){
+    gridDashboards.innerHTML = "";
+    const lista = filtro === "todos" ? DASHBOARDS : DASHBOARDS.filter(d=>d.categoria===filtro);
+    lista.forEach(d=>{
+      const tarjeta = document.createElement("article");
+      tarjeta.className = "tarjeta-dash";
+      tarjeta.innerHTML = `
+        <div class="miniatura">
+          <span class="badge">${NOMBRES_FILTRO[d.categoria]}</span>
+          <img src="${d.imagen}" alt="${d.nombre}" onerror="this.style.display='none'; this.parentElement.querySelector('i').style.display='flex';">
+          <i class="fa-solid ${iconoParaCategoria(d.categoria)}" style="display:none;"></i>
+        </div>
+        <div class="cuerpo">
+          <h4>${d.nombre}</h4>
+          <p>${d.descripcion}</p>
+          <div class="pie-tarjeta">
+            <span class="contador-visitas"><i class="fa-solid fa-eye"></i> Ver tablero</span>
+            <button class="btn btn-azul btn-sm" data-ver-detalle="${d.id}">Ver detalle</button>
+          </div>
+        </div>`;
+      gridDashboards.appendChild(tarjeta);
+    });
+    gridDashboards.querySelectorAll("[data-ver-detalle]").forEach(btn=>{
+      btn.addEventListener("click", ()=> abrirModalDashboard(btn.dataset.verDetalle));
+    });
+  }
+
+  function renderPlataformas(){
+    gridPlataformas.innerHTML = "";
+    DASHBOARDS.forEach(d=>{
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "tarjeta-plataforma";
+      tarjeta.innerHTML = `
+        <div class="icono-plat"><i class="fa-solid ${iconoParaCategoria(d.categoria)}"></i></div>
+        <h4>${d.nombre}</h4>
+        <a class="enlace-plat" href="${d.url}" target="_blank" rel="noopener" data-plataforma="${d.id}">
+          Abrir plataforma <i class="fa-solid fa-arrow-right"></i>
+        </a>`;
+      gridPlataformas.appendChild(tarjeta);
+    });
+    gridPlataformas.querySelectorAll("[data-plataforma]").forEach(enlace=>{
+      enlace.addEventListener("click", ()=> registrarVisita(
+        DASHBOARDS.find(d=>d.id===enlace.dataset.plataforma).nombre
+      ));
+    });
+  }
+
+  document.getElementById("filtrosDash").addEventListener("click", (e)=>{
+    const chip = e.target.closest(".chip-filtro");
+    if(!chip) return;
+    document.querySelectorAll(".chip-filtro").forEach(c=>c.classList.remove("activo"));
+    chip.classList.add("activo");
+    renderDashboards(chip.dataset.filtro);
+  });
+
+  renderDashboards("todos");
+  renderPlataformas();
+
+  /* --------------------------------------------------------
+     4. MODAL DE VISUALIZACIÓN DE TABLERO + REGISTRO DE VISITA
+  -------------------------------------------------------- */
+  const overlayModal = document.getElementById("overlayModal");
+  const modalTitulo = document.getElementById("modalTitulo");
+  const iframeModal = document.getElementById("iframeModal");
+  const modalCuerpo = document.getElementById("modalCuerpo");
+
+  function abrirModalDashboard(idDashboard){
+    const d = DASHBOARDS.find(x=>x.id===idDashboard);
+    if(!d) return;
+    modalTitulo.textContent = d.nombre;
+    iframeModal.src = d.url;
+    overlayModal.classList.add("visible");
+    document.body.style.overflow = "hidden";
+    registrarVisita(d.nombre);
+  }
+
+  function cerrarModal(){
+    overlayModal.classList.remove("visible");
+    iframeModal.src = "";
+    document.body.style.overflow = "";
+  }
+
+  document.getElementById("btnCerrarModal").addEventListener("click", cerrarModal);
+  overlayModal.addEventListener("click", (e)=>{ if(e.target === overlayModal) cerrarModal(); });
+  document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") cerrarModal(); });
+
+  document.getElementById("btnPantallaCompleta").addEventListener("click", ()=>{
+    if(modalCuerpo.requestFullscreen) modalCuerpo.requestFullscreen();
+    else if(modalCuerpo.webkitRequestFullscreen) modalCuerpo.webkitRequestFullscreen();
+  });
+
+  /* --------------------------------------------------------
+     5. REGISTRO DE VISITAS EN GOOGLE SHEETS (Apps Script)
+  -------------------------------------------------------- */
+  function registrarVisita(nombreDashboard){
+    if(!WEB_APP_URL || WEB_APP_URL.indexOf("PEGAR_AQUI") !== -1){
+      console.info("[Reporte de visitas] WEB_APP_URL no configurada todavía. Visita no enviada:", nombreDashboard);
+      return;
+    }
+    fetch(WEB_APP_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ dashboard: nombreDashboard, visitas: 1 })
+    }).catch(err=>{
+      console.warn("[Reporte de visitas] No fue posible registrar la visita:", err);
+    });
+  }
+
+  /* --------------------------------------------------------
+     6. FAQ (ACORDEÓN)
+  -------------------------------------------------------- */
+  const FAQ = [
+    { p:"¿Qué es el Portal de Analítica de Datos de SEFIN?", r:"Es una plataforma de transparencia que convierte los registros contables del Estado en tableros visuales e interactivos, disponibles para toda la ciudadanía." },
+    { p:"¿De dónde provienen los datos que se muestran?", r:"Los tableros consumen la información oficial de ejecución presupuestaria y financiera administrada por la Secretaría de Finanzas." },
+    { p:"¿Con qué frecuencia se actualiza la información?", r:"La actualización de los datos es gestionada por la Secretaría de Finanzas. Para conocer el detalle, le invitamos a comunicarse por WhatsApp o la sección de Contacto." },
+    { p:"¿Puedo descargar o exportar la información de los tableros?", r:"La exportación de datos a otros formatos es de carácter confidencial y reservado. Le recomendamos contactar a la fuente por WhatsApp." },
+    { p:"¿El portal funciona en celulares y tabletas?", r:"Sí. El portal es 100% responsive y se adapta a computadoras, tabletas y dispositivos móviles." },
+    { p:"¿Cómo veo el detalle de un tablero específico?", r:"Ingrese a la sección Tableros/Dashboard, seleccione la tarjeta de su interés y presione 'Ver detalle' para visualizarlo en una ventana ampliada." }
+  ];
+  const listaFaq = document.getElementById("listaFaq");
+  FAQ.forEach((item,i)=>{
+    const el = document.createElement("div");
+    el.className = "faq-item";
+    el.innerHTML = `
+      <button class="faq-pregunta" aria-expanded="false" id="faqBtn${i}">
+        <span>${item.p}</span><i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-respuesta"><p>${item.r}</p></div>`;
+    listaFaq.appendChild(el);
+    el.querySelector(".faq-pregunta").addEventListener("click", ()=>{
+      const abierto = el.classList.toggle("abierto");
+      el.querySelector(".faq-pregunta").setAttribute("aria-expanded", abierto ? "true":"false");
+    });
+  });
+
+  /* --------------------------------------------------------
+     7. FORMULARIO DE CONTACTO
+  -------------------------------------------------------- */
+  const formContacto = document.getElementById("formContacto");
+  const estadoFormContacto = document.getElementById("estadoFormContacto");
+  formContacto.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    estadoFormContacto.textContent = "Su mensaje ha sido recibido. Gracias por escribirnos.";
+    estadoFormContacto.className = "form-estado ok";
+    formContacto.reset();
+  });
+
+  /* --------------------------------------------------------
+     8. BOTÓN FLOTANTE DE WHATSAPP
+  -------------------------------------------------------- */
+  const mensajeWhatsapp = "Hola.\nBienvenido a conocer del futuro de nuestras finanzas, guiado por datos. Transformamos los números del presupuesto en información visual y accesible para todos los ciudadanos.";
+  document.getElementById("btnWhatsapp").addEventListener("click", ()=>{
+    const url = "https://wa.me/50498236915?text=" + encodeURIComponent(mensajeWhatsapp);
+    window.open(url, "_blank", "noopener");
+  });
+
+  /* --------------------------------------------------------
+     9. CHATBOT
+  -------------------------------------------------------- */
+  const btnChatbot = document.getElementById("btnChatbot");
+  const ventanaChat = document.getElementById("ventanaChat");
+  const chatCuerpo = document.getElementById("chatCuerpo");
+  const chatInput = document.getElementById("chatInput");
+  const btnEnviarChat = document.getElementById("btnEnviarChat");
+  const btnMinimizarChat = document.getElementById("btnMinimizarChat");
+  const btnLimpiarChat = document.getElementById("btnLimpiarChat");
+
+  const PREGUNTAS_SUGERIDAS = [
+    { texto:"💰 ¿Cuánto ha recaudado el Estado frente a lo que ha gastado este año?", clave:"comparativo" },
+    { texto:"🏗️ ¿Qué porcentaje del presupuesto se está invirtiendo en infraestructura y desarrollo?", clave:"inversion" },
+    { texto:"🏢 ¿Cuánto dinero del presupuesto se destina al pago de sueldos públicos y deudas?", clave:"gasto" },
+    { texto:"🏛️ ¿Qué sectores del gobierno central o empresas públicas concentran más presupuesto?", clave:"institucional" },
+    { texto:"🌍 ¿El gasto público se sostiene con fondos nacionales o con préstamos extranjeros?", clave:"fuente" },
+    { texto:"📉 ¿Cómo ha evolucionado el presupuesto y el balance fiscal en los últimos años?", clave:"evolucion" }
+  ];
+
+  const RESPUESTAS_CLAVE = {
+    comparativo: "El tablero <strong>Comparativo de Ingresos y Egresos del Presupuesto General</strong> compara directamente lo recaudado (Ingresos) frente a lo gastado (Egresos) a lo largo de los años fiscales, y el tablero <strong>Ejecución Acumulada</strong> resume el avance actual del gasto, la inversión y la recaudación. Puede consultarlos en la sección Tableros/Dashboard.",
+    inversion: "El tablero <strong>Programación de Inversión Pública</strong> detalla la asignación y el avance del capital destinado a proyectos estratégicos: infraestructura, bienes duraderos y transferencias para el desarrollo nacional. Visítelo en la sección Tableros/Dashboard para ver el detalle.",
+    gasto: "El tablero <strong>Grupo de Gasto</strong> muestra cómo se distribuyen los recursos aprobados para el funcionamiento del Estado, incluyendo el pago de la deuda y los servicios esenciales. Para el detalle por institución, revise también <strong>Ejecución de Egresos a Nivel de Instituciones</strong>.",
+    institucional: "El tablero <strong>Ejecución de Egresos a Nivel de Instituciones</strong> identifica qué instituciones del sector público concentran la mayor parte de los recursos y cómo progresa su ejecución presupuestaria.",
+    fuente: "El tablero <strong>Ejecución de Egresos por Fuente Acumulado por Nivel de Instituciones</strong> clasifica los recursos según su procedencia: fuentes internas (fondos nacionales) y fuentes externas (financiamiento internacional o donaciones).",
+    evolucion: "El tablero <strong>Comparativo de Ingresos y Egresos del Presupuesto General</strong> ofrece la perspectiva histórica para evaluar la sostenibilidad financiera y la tendencia del balance público a lo largo de los años fiscales."
+  };
+
+  const RESPUESTA_ACTUALIZACION = "La actualización de los datos y su exportación a otros formatos es de carácter confidencial y reservado. Te recomendamos contactar a la fuente por WhatsApp.";
+
+  const RESPUESTA_GENERICA = "No cuento con un dato específico para esa consulta dentro del portal, pero con gusto puedo orientarle: puede explorar los tableros disponibles en la sección Tableros/Dashboard, o comunicarse directamente con nuestro equipo por WhatsApp o en la sección de Contacto para una atención personalizada.";
+
+  const SALUDO_INICIAL = "¡Hola! Soy el Asistente IA del Portal de Analítica de Datos de SEFIN. Puedo ayudarle a entender los tableros de presupuesto, ejecución de gasto, captación de ingresos e inversión pública. ¿En qué puedo ayudarle hoy?";
+
+  let historialChat = [];
+  let chatInicializado = false;
+
+  function agregarMensaje(texto, esUsuario){
+    const msg = document.createElement("div");
+    msg.className = "msg " + (esUsuario ? "msg-usuario" : "msg-bot");
+    msg.innerHTML = `
+      <div class="msg-avatar"><i class="fa-solid ${esUsuario ? 'fa-user':'fa-robot'}"></i></div>
+      <div class="msg-burbuja">${texto}</div>`;
+    chatCuerpo.appendChild(msg);
+    chatCuerpo.scrollTop = chatCuerpo.scrollHeight;
+    historialChat.push({ esUsuario, texto });
+  }
+
+  function agregarChips(){
+    const cont = document.createElement("div");
+    cont.className = "msg msg-bot";
+    const chips = document.createElement("div");
+    chips.className = "chips-sugeridas";
+    PREGUNTAS_SUGERIDAS.forEach(p=>{
+      const chip = document.createElement("button");
+      chip.className = "chip-sugerida";
+      chip.textContent = p.texto;
+      chip.addEventListener("click", ()=> procesarPregunta(p.texto, p.clave));
+      chips.appendChild(chip);
+    });
+    cont.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>`;
+    cont.appendChild(chips);
+    chatCuerpo.appendChild(cont);
+    chatCuerpo.scrollTop = chatCuerpo.scrollHeight;
+  }
+
+  function mostrarEscribiendo(){
+    const el = document.createElement("div");
+    el.className = "msg msg-bot";
+    el.id = "indicadorEscribiendo";
+    el.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="msg-burbuja"><div class="escribiendo"><span></span><span></span><span></span></div></div>`;
+    chatCuerpo.appendChild(el);
+    chatCuerpo.scrollTop = chatCuerpo.scrollHeight;
+  }
+  function quitarEscribiendo(){
+    const el = document.getElementById("indicadorEscribiendo");
+    if(el) el.remove();
+  }
+
+  function responderPorPalabrasClave(textoOriginal){
+    const t = textoOriginal.toLowerCase();
+
+    if(/(actualiz|exportar|exportaci|excel|descargar)/.test(t)){
+      return RESPUESTA_ACTUALIZACION;
+    }
+    if(/(recaud|ingreso)/.test(t) && /(gast|egreso)/.test(t)){
+      return RESPUESTAS_CLAVE.comparativo;
+    }
+    if(/(inversi|infraestructura|obra)/.test(t)){
+      return RESPUESTAS_CLAVE.inversion;
+    }
+    if(/(sueldo|salario|deuda|planilla)/.test(t)){
+      return RESPUESTAS_CLAVE.gasto;
+    }
+    if(/(instituci|empresa p[uú]blica|sector)/.test(t)){
+      return RESPUESTAS_CLAVE.institucional;
+    }
+    if(/(fuente|pr[eé]stamo|donaci|externo|nacional)/.test(t)){
+      return RESPUESTAS_CLAVE.fuente;
+    }
+    if(/(evoluci|hist[oó]rico|balance|tendencia|a[nñ]os)/.test(t)){
+      return RESPUESTAS_CLAVE.evolucion;
+    }
+    if(/(dashboard|tablero)/.test(t)){
+      return "Contamos con siete tableros interactivos que cubren la visión macro del presupuesto, el origen de los ingresos y el destino del gasto e inversión pública. Puede explorarlos todos en la sección Tableros/Dashboard.";
+    }
+    if(/(presupuesto)/.test(t)){
+      return "El portal presenta el ciclo completo del presupuesto público: desde su recaudación (ingresos) hasta su ejecución en gasto e inversión. Explore los tableros para conocer el detalle de cada componente.";
+    }
+    if(/(whatsapp|contact|tel[eé]fono|correo|escribir)/.test(t)){
+      return "Puede escribirnos por WhatsApp usando el botón flotante verde, o visitar la sección de Contacto para ver nuestro teléfono, correo y horario de atención.";
+    }
+    if(/(hola|buenas|salud)/.test(t)){
+      return "¡Hola! Cuénteme qué le gustaría conocer sobre el presupuesto, los tableros o la inversión pública.";
+    }
+    return RESPUESTA_GENERICA;
+  }
+
+  function procesarPregunta(textoMostrado, clave){
+    agregarMensaje(textoMostrado, true);
+    mostrarEscribiendo();
+    setTimeout(()=>{
+      quitarEscribiendo();
+      const respuesta = clave && RESPUESTAS_CLAVE[clave]
+        ? RESPUESTAS_CLAVE[clave]
+        : responderPorPalabrasClave(textoMostrado);
+      agregarMensaje(respuesta, false);
+    }, 650 + Math.random()*450);
+  }
+
+  function inicializarChat(){
+    if(chatInicializado) return;
+    chatInicializado = true;
+    agregarMensaje(SALUDO_INICIAL, false);
+    agregarChips();
+  }
+
+  function abrirChat(){
+    ventanaChat.classList.add("visible");
+    inicializarChat();
+    chatInput.focus();
+  }
+  function cerrarChat(){ ventanaChat.classList.remove("visible"); }
+
+  btnChatbot.addEventListener("click", ()=>{
+    ventanaChat.classList.contains("visible") ? cerrarChat() : abrirChat();
+  });
+  btnMinimizarChat.addEventListener("click", cerrarChat);
+
+  btnLimpiarChat.addEventListener("click", ()=>{
+    chatCuerpo.innerHTML = "";
+    historialChat = [];
+    chatInicializado = false;
+    inicializarChat();
+  });
+
+  function enviarDesdeInput(){
+    const valor = chatInput.value.trim();
+    if(!valor) return;
+    chatInput.value = "";
+    procesarPregunta(valor, null);
+  }
+  btnEnviarChat.addEventListener("click", enviarDesdeInput);
+  chatInput.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter"){ e.preventDefault(); enviarDesdeInput(); }
+  });
+
+})();
+</script>
+</body>
+</html>
